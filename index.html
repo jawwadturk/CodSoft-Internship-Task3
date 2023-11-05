@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="Calculator">
+        <div class="Display">
+            <input type="text" id="InputBox" value="0">
+        </div>
+
+        <div class="Row">
+            <button type="button" onclick="appendToInput('7')">7</button>
+            <button type="button" onclick="appendToInput('8')">8</button>
+            <button type="button" onclick="appendToInput('9')">9</button>
+            <button type="button" onclick="appendToInput('*')">*</button>
+        </div>
+
+        <div class="Row">
+            <button type="button" onclick="appendToInput('4')">4</button>
+            <button type="button" onclick="appendToInput('5')">5</button>
+            <button type="button" onclick="appendToInput('6')">6</button>
+            <button type="button" onclick="appendToInput('+')">+</button>
+        </div>
+
+        <div class="Row">
+            <button type="button" onclick="appendToInput('1')">1</button>
+            <button type="button" onclick="appendToInput('2')">2</button>
+            <button type="button" onclick="appendToInput('3')">3</button>
+            <button type="button" onclick="appendToInput('-')">-</button>
+        </div>
+        <div class="Row">
+            <button type="button" onclick="appendToInput('0')">0</button>
+            <button type="button" onclick="clearInput()" class="extra">C</button>
+            <button type="button" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToInput(value) {
+            const inputBox = document.getElementById('InputBox');
+            if (inputBox.value === '0') {
+                inputBox.value = value;
+            } else {
+                inputBox.value += value;
+            }
+        }
+
+        function clearInput() {
+            document.getElementById('InputBox').value = '0';
+        }
+
+        function calculateResult() {
+            const inputBox = document.getElementById('InputBox');
+            try {
+                inputBox.value = eval(inputBox.value);
+            } catch (error) {
+                inputBox.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
